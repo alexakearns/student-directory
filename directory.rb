@@ -6,22 +6,13 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
-  height = gets.chomp
-  birthplace = gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add student has to the array
-    students << {name: name, cohort: :november,
-      birthplace: birthplace, height: height}
+    students << {name: name, cohort: :november}
     puts "Now we have #{students.count} students"
     # get another name from user
     name = gets.chomp
-    if name.empty?
-      break
-    else
-      height = gets.chomp
-      birthplace = gets.chomp
-    end
   end
   # return array of students
   students
@@ -33,11 +24,11 @@ def print_header
 end
 def print(students)
   students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort), #{student[:height]}cm from #{student[:birthplace]}."
+    puts "#{student[:name]} (#{student[:cohort]} cohort)".center(100)
   end
 end
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "Overall, we have #{students.count} great students".center(100)
 end
 
 students = input_students
