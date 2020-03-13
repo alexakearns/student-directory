@@ -25,6 +25,8 @@ def input_students
     end
   end
   # return array of students
+  puts "Which cohort of students?"
+  @month = gets.chomp.to_sym
   students
 end
 
@@ -33,8 +35,10 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  students.each.with_index do |k, v|
+    if students[v][:cohort] == @month
+      puts students[v][:name]
+    end
   end
 end
 
