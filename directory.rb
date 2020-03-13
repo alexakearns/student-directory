@@ -5,9 +5,9 @@ def input_students
   # create and empty array
   students = []
   # get the first name
-  name = gets.delete("\n")
+  name = gets.chomp
   puts "Enter cohort"
-  cohort = gets.delete("\n")
+  cohort = gets.chomp
   cohort = :Empty if cohort.empty?
   # while the name is not empty, repeat this code
   while !name.empty? do
@@ -19,12 +19,12 @@ def input_students
       puts "Now we have #{students.count} students"
     end
     # get another name from user
-    name = gets.delete("\n")
+    name = gets.chomp
     if name.empty?
       break
     else
       puts "Enter cohort"
-      cohort = gets.delete("\n").capitalize
+      cohort = gets.chomp.capitalize
       cohort = :Empty if cohort.empty?
     end
   end
@@ -37,13 +37,17 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  if students.count > 0
+    students.each do |student|
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    end
   end
 end
 
 def print_footer(students)
-  if students.count == 1
+  if students.count == 0
+    puts "There are no students"
+  elsif students.count == 1
     puts "Overall, we have #{students.count} great student"
   else
     puts "Overall, we have #{students.count} great students"
