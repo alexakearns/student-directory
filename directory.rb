@@ -5,9 +5,9 @@ def input_students
   # create and empty array
   students = []
   # get the first name
-  name = gets.chomp
+  name = gets.delete("\n")
   puts "Enter cohort"
-  cohort = gets.chomp
+  cohort = gets.delete("\n")
   cohort = :Empty if cohort.empty?
   # while the name is not empty, repeat this code
   while !name.empty? do
@@ -19,12 +19,12 @@ def input_students
       puts "Now we have #{students.count} students"
     end
     # get another name from user
-    name = gets.chomp
+    name = gets.delete("\n")
     if name.empty?
       break
     else
       puts "Enter cohort"
-      cohort = gets.chomp.capitalize
+      cohort = gets.delete("\n").capitalize
       cohort = :Empty if cohort.empty?
     end
   end
